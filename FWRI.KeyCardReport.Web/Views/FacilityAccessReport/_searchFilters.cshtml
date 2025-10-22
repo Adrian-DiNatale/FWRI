@@ -1,0 +1,78 @@
+﻿@using FWRI.KeyCardReport.Web.Models.FacilityAccessReport
+@model FacilityAccessSearchFilterModel
+
+@using (Html.BeginForm("facilityaccessreport", "reports", FormMethod.Post, new { @name = "access-search-filters", @class = "", @autocomplete = "off" }))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>
+                Search Filters
+            </h2>
+            <div class="panel-body">
+                <div class="row panel-collapse">
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FirstName, "First Name", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.FirstName, new { @Value = Model.FirstName, @class = "form-control input-sm", @PlaceHolder = "First Name" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LastName, "Last Name", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.LastName, new { @Value = Model.LastName, @class = "form-control input-sm", @PlaceHolder = "Last Name" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.WorkEmail, "Work Email", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.WorkEmail, new { @Value = Model.WorkEmail, @class = "form-control input-sm", @PlaceHolder = "Work Email" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.WorkTitle, "Work Title", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.WorkTitle, new { @Value = Model.WorkTitle, @class = "form-control input-sm", @PlaceHolder = "Work Title" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EntryDateTimeBegin, "Log Date From", new { @class = "form-label" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.EntryDateTimeBegin, new { data_input = "", @Value = Model.EntryDateTimeBegin, @class = "form-control input-sm", @PlaceHolder = "Log Date From" })
+                                <div id="EntryDateTimeBeginClear" class="input-group-text input-sm">X</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EntryDateTimeEnd, "Log Date To", new { @class = "form-label" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.EntryDateTimeEnd, new { @Value = Model.EntryDateTimeEnd, @class = "form-control input-sm", @PlaceHolder = "Log Date To" })
+                                <div id="EntryDateTimeEndClear" class="input-group-text input-sm">X</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.KeyCardId, "Key Card ID", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.KeyCardId, new { @Value = Model.KeyCardId, @class = "form-control input-sm", @PlaceHolder = "Key Card ID" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ScannerId, "Scanner ID", new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.ScannerId, new { @Value = Model.ScannerId, @class = "form-control input-sm", @PlaceHolder = "Scanner ID" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-5">
+                    <div class="col-lg-12 text-center">
+                        <button type="reset" class="btn btn-secondary">Reset Filters</button>
+                        <button type="submit" class="btn btn-primary" data-action="search">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    await Html.RenderPartialAsync("_pagervalues", Model);
+}

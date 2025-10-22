@@ -1,0 +1,40 @@
+﻿@using FWRI.KeyCardReport.Web.Models.FacilityAccessReport
+@model FacilityAccessReportModel
+@{
+    ViewData["Title"] = "Facility Access Report";
+}
+
+@section css {
+    <link href="@Url.Content("~/lib/datatables/datatables.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/lib/flatpickr/flatpickr.min.css")" rel="stylesheet" />
+}
+
+<div >
+    <h1 class="display-4 text-center">Facility Access Report</h1>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-inverse">
+                @{
+                    await Html.RenderPartialAsync("~/views/facilityaccessreport/_searchFilters.cshtml", Model.SearchFilter);
+                }
+            </div>
+            <div id="accessResultsGrid" class="panel panel-inverse">
+                @{
+                    await Html.RenderPartialAsync("~/views/facilityaccessreport/_resultGrid.cshtml", Model);
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+@{
+    await Html.RenderPartialAsync("~/views/shared/_modal.cshtml", Model);
+}
+@section scripts {
+    <script type="text/javascript" src="@Url.Content("~/lib/datatables/datatables.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/modules/datatables/main.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/lib/flatpickr/flatpickr.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/modules/facilityaccessreport/main.js")"></script>
+}
+

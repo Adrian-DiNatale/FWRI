@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Data\categories.json" />
+    <None Remove="Data\employees.json" />
+    <None Remove="Data\images.json" />
+    <None Remove="Data\keycardentries.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\categories.json" />
+    <EmbeddedResource Include="Data\employees.json" />
+    <EmbeddedResource Include="Data\images.json" />
+    <EmbeddedResource Include="Data\keycardentries.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FWRI.KeyCardReport.Library\FWRI.KeyCardReport.Library.csproj" />
+  </ItemGroup>
+
+</Project>
